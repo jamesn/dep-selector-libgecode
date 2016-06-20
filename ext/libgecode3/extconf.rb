@@ -12,6 +12,10 @@ module GecodeBuild
   def self.windows?
    !!(RUBY_PLATFORM =~ /mswin|mingw|windows/)
   end
+  
+  def self.freebsd?
+    !!(RbConfig::CONFIG['host_os'] =~ /bsd/)
+  end
 
   def self.gecode_vendor_dir
     GECODE_VENDOR_DIR
