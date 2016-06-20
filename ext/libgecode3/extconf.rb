@@ -27,7 +27,7 @@ module GecodeBuild
 
   def self.configure_cmd
     args = %W[
-      sh
+      bash
       #{configure}
       --prefix=#{prefix}
       --disable-doc-dot
