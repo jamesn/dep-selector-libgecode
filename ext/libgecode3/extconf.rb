@@ -82,6 +82,10 @@ module GecodeBuild
       original_configure = IO.read(configure)
       original_configure.gsub!('pthread', 'mthread')
       File.open(configure, "w+") { |f| f.print(original_configure) }
+    elsif freebsd?
+      original_configure = IO.read(configure)
+      original_configure.gsub!('#! /bin/sh', '#!/usr/bin/env bash')
+      File.open(configure, "w+") { |f| f.print(original_configure) }
     end
   end
 
