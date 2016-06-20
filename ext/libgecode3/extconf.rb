@@ -97,11 +97,13 @@ module GecodeBuild
   def self.run_build_commands
     setup_env
     patch_configure
+    make = 'make'
+    make = 'gmake' if freebsd?
     system(*configure_cmd) &&
-      system("make", "clean") &&
-      system("make", "-j", "5") &&
-      system("make", "install") &&
-      system("make", "distclean")
+      system(make, "clean") &&
+      system(make, "-j", "5") &&
+      system(make, "install") &&
+      system(make, "distclean")
   end
 
   def self.run
